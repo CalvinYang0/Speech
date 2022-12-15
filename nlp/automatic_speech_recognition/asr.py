@@ -34,7 +34,7 @@ class WhisperAsr(ASR):
     https://github.com/openai/whisper
     源码已在项目中给出
     可以指定模型大小，但对于简短的语句相差不大
-    在项目中我给出了'tiny.pt’，第一次使用whisper会自动将使用的模型下载到缓存
+    第一次使用whisper会自动将使用的模型下载到缓存
     """
 
     def load_asr_model(self, model_name='base'):
