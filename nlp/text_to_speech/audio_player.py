@@ -1,7 +1,9 @@
 import subprocess
+
 """
 音频播放文件
 """
+
 
 class AudioPlayer:
     """
@@ -34,10 +36,7 @@ class EspeakAudioPlayer(AudioPlayer):
         """
         subprocess.call(['espeak', '-s', speed, '-g', gap, sentence])
 
-    def __init__(self):
-        pass
-
 
 if __name__ == "__main__":
-    espeaker_audio_player = EspeakAudioPlayer()
-    espeaker_audio_player.play_audio('Hello this is a test')
+    eSpeaker_audio_player = EspeakAudioPlayer()
+    eSpeaker_audio_player.play_audio('Hello this is a test')

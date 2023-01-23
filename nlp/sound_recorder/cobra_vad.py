@@ -71,6 +71,8 @@ class CobraVAD(Thread):
 
             if mode == 'right_now':
                 begin_flag = True
+            else:
+                begin_flag = False
             if mode == 'wait_human_voice':
                 begin_flag = False
             human_voice_time = None
