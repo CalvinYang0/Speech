@@ -1,8 +1,7 @@
 from nlp.text_to_speech.audio_player import EspeakAudioPlayer
 from nlp.automatic_speech_recognition.asr import WhisperAsr
 from nlp.keyword_spotting import picovoice_kws
-from nlp.sound_recorder import cobra_vad
-
+from nlp.sound_recorder.webrtc_vad import WebrtcVad
 
 class Listener:
     """
@@ -18,7 +17,8 @@ class Listener:
         # kws = picovoice_kws.PorcupineKWS()
         # kws.run()
         audio_player.play_audio("I am here.")
-        vad = cobra_vad.CobraVAD()
+        vad = WebrtcVad()
+
         vad.run()
         print("识别结束")
         text = asr.audio2text("vad.wav")
