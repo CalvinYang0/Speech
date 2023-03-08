@@ -3,16 +3,18 @@ Requirements:
 + pyaudio - `pip install pyaudio`
 + py-webrtcvad - `pip install webrtcvad`
 '''
-import webrtcvad
 import collections
-import sys
 import signal
-import pyaudio
-
+import sys
+import time
+import wave
 from array import array
 from struct import pack
-import wave
-import time
+
+import pyaudio
+import webrtcvad
+
+
 class WebrtcVad:
     def run(self):
         FORMAT = pyaudio.paInt16
@@ -28,10 +30,12 @@ class WebrtcVad:
         NUM_WINDOW_CHUNKS_END = NUM_WINDOW_CHUNKS * 2
 
         START_OFFSET = int(NUM_WINDOW_CHUNKS * CHUNK_DURATION_MS * 0.5 * RATE)
-
+        # 此处可更改人声检测等级，0-3，3最不敏感，适合嘈杂环境
         vad = webrtcvad.Vad(1)
 
         pa = pyaudio.PyAudio()
+        # 此处可更改麦克风序号
+
         stream = pa.open(format=FORMAT,
                          channels=CHANNELS,
                          rate=RATE,
@@ -110,6 +114,7 @@ class WebrtcVad:
                 if not triggered:
                     ring_buffer.append(chunk)
                     num_voiced = sum(ring_buffer_flags)
+                    # 需要连续检测到人声
                     if num_voiced > 0.8 * NUM_WINDOW_CHUNKS:
                         sys.stdout.write(' Open ')
                         triggered = True
@@ -121,6 +126,7 @@ class WebrtcVad:
                     # voiced_frames.append(chunk)
                     ring_buffer.append(chunk)
                     num_unvoiced = NUM_WINDOW_CHUNKS_END - sum(ring_buffer_flags_end)
+                    # 时间超过10秒或者在较长时间内未连续检测刀人声
                     if num_unvoiced > 0.90 * NUM_WINDOW_CHUNKS_END or TimeUse > 10:
                         sys.stdout.write(' Close ')
                         triggered = False
@@ -141,10 +147,8 @@ class WebrtcVad:
                 raw_data.pop()
             raw_data.reverse()
             raw_data = normalize(raw_data)
+            # 此处更改储存文件路径
             record_to_file("vad.wav", raw_data, 2)
             leave = True
 
         stream.close()
-
-
-

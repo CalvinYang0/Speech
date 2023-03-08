@@ -35,3 +35,5 @@ pip install pvrecorder
 pip install tqdm
 pip install transformers==4.25.1
 pip install webrtcvad
+pip install pyaudio
+sudo apt-get intsall portaudio19-dev
