@@ -1,5 +1,4 @@
-from nlp.snowboy_kws import snowboydecoder as snowboydecoder
-import sys
+from nlp.snowboy_kws.ubuntu18 import snowboydecoder as snowboydecoder
 import signal
 
 interrupted = False

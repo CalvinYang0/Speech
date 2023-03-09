@@ -20,7 +20,8 @@ QQ：2737312763
 2. 注意，库安装ffmpeg-python而不是python-ffmpeg或者ffmpeg
 3. 安装Whisper所需要的库文件,torch需要自行安装，版本推荐1.12.1，cuda16，gpu版本
 4. 安装webrtcvad
-5. 下载snowboy的模型文件并替换
+5. 根据Github中Snowboy的文档安装snowboy
+6. 下载snowboy的模型文件并替换
 ~~~
 sudo apt-get install ffmpeg
 sudo apt-get install espeak
