@@ -1,10 +1,9 @@
 # 项目信息
 用于给智能设备做语音服务
 # 版本信息
-V0.1.3
-具体改动：发现了picovoice需要GLIBC2.29支持，不适用Ubuntu18.04
-        提供了另一套基于webrtc的VAD
-日期：2023.3.8
+V0.1.4
+具体改动：增加了snowboy语音唤醒，新的kws和vad还未给出注释
+日期：2023.3.10
 
 # 作者信息
 作者：杨康震
@@ -21,6 +20,7 @@ QQ：2737312763
 2. 注意，库安装ffmpeg-python而不是python-ffmpeg或者ffmpeg
 3. 安装Whisper所需要的库文件,torch需要自行安装，版本推荐1.12.1，cuda16，gpu版本
 4. 安装webrtcvad
+5. 下载snowboy的模型文件并替换
 ~~~
 sudo apt-get install ffmpeg
 sudo apt-get install espeak

@@ -2,6 +2,8 @@ from nlp.text_to_speech.audio_player import EspeakAudioPlayer
 from nlp.automatic_speech_recognition.asr import WhisperAsr
 # from nlp.keyword_spotting import picovoice_kws
 from nlp.sound_recorder.webrtc_vad import WebrtcVad
+from nlp.keyword_spotting.snowboy_vad import SnowboyKWS
+
 
 class Listener:
     """
@@ -13,10 +15,11 @@ class Listener:
         asr = WhisperAsr()
         asr.load_asr_model()
         audio_player = EspeakAudioPlayer()
+
         audio_player.play_audio("Please give your instructions.")
-        # kws = picovoice_kws.PorcupineKWS()
-        # kws.run()
-        # audio_player.play_audio("I am here.")
+        kws = SnowboyKWS()
+        kws.run()
+        audio_player.play_audio("I am here.")
         vad = WebrtcVad()
 
         vad.run()
