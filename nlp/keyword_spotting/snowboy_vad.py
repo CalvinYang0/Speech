@@ -1,4 +1,4 @@
-from nlp.snowboy_kws.ubuntu18 import snowboydecoder as snowboydecoder
+from nlp.snowboy_kws import snowboydecoder as snowboydecoder
 import signal
 
 interrupted = False
@@ -16,6 +16,7 @@ def interrupt_callback():
 
 class SnowboyKWS:
     def run(self):
+        # 模型路径
         model = "robot.pmdl"
         # capture SIGINT signal, e.g., Ctrl+C
         signal.signal(signal.SIGINT, signal_handler)
