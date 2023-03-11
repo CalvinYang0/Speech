@@ -14,8 +14,12 @@ def interrupt_callback():
     return interrupted
 
 
+def getSentence():
+    print("yes")
+
+
 class SnowboyKWS:
-    def run(self):
+    def run(self,function=snowboydecoder.play_audio_file()):
         # 模型路径
         model = "robot.pmdl"
         # capture SIGINT signal, e.g., Ctrl+C
@@ -25,10 +29,14 @@ class SnowboyKWS:
         print('Listening... Press Ctrl+C to exit')
 
         # main loop
-        detector.start(detected_callback=snowboydecoder.play_audio_file,
-                       interrupt_check=interrupt_callback,
-                       sleep_time=0.03)
-
+        if function==None:
+            detector.start(detected_callback=function,
+                           interrupt_check=interrupt_callback,
+                           sleep_time=0.03)
+        else:
+            detector.start(detected_callback=function,
+                           interrupt_check=interrupt_callback,
+                           sleep_time=0.03)
         detector.terminate()
 
 

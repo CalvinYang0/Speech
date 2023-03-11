@@ -2,7 +2,7 @@ from nlp.text_to_speech.audio_player import EspeakAudioPlayer
 from nlp.automatic_speech_recognition.asr import WhisperAsr
 # from nlp.keyword_spotting import picovoice_kws
 from nlp.sound_recorder.webrtc_vad import WebrtcVad
-from nlp.keyword_spotting.snowboy_vad import SnowboyKWS
+from nlp.keyword_spotting.snowboy_kws import SnowboyKWS
 
 
 class Listener:

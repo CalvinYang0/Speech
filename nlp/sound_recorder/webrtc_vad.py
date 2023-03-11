@@ -127,7 +127,7 @@ class WebrtcVad:
                     ring_buffer.append(chunk)
                     num_unvoiced = NUM_WINDOW_CHUNKS_END - sum(ring_buffer_flags_end)
                     # 时间超过10秒或者在较长时间内未连续检测刀人声
-                    if num_unvoiced > 0.90 * NUM_WINDOW_CHUNKS_END or TimeUse > 10:
+                    if num_unvoiced > 0.90 * NUM_WINDOW_CHUNKS_END or TimeUse > 5:
                         sys.stdout.write(' Close ')
                         triggered = False
                         got_a_sentence = True

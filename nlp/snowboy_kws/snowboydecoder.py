@@ -2,7 +2,7 @@
 
 import collections
 import pyaudio
-from nlp.snowboy_kws.ubuntu22 import snowboydetect
+from nlp.snowboy_kws.ubuntu18 import snowboydetect
 import time
 import wave
 import os
